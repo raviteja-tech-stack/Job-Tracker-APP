@@ -24,6 +24,9 @@ export default function AddJobForm({ onJobAdded, editJob, clearEdit }) {
     message: "",
     severity: "success",
   });
+  const BASE_URL = import.meta.env.PROD
+    ? "https://job-tracker-app-uely.onrender.com"
+    : "http://localhost:3000";
 
   useEffect(() => {
     if (editJob) {
@@ -56,7 +59,7 @@ export default function AddJobForm({ onJobAdded, editJob, clearEdit }) {
 
     try {
       if (editJob) {
-        await axios.put(`http://localhost:3000/jobs/${editJob._id}`, job, {
+        await axios.put(`${BASE_URL}/jobs/${editJob._id}`, job, {
           headers: { Authorization: `Bearer ${token}` },
         });
         clearEdit();
@@ -66,7 +69,7 @@ export default function AddJobForm({ onJobAdded, editJob, clearEdit }) {
           severity: "success",
         });
       } else {
-        await axios.post("http://localhost:3000/jobs", job, {
+        await axios.post(`${BASE_URL}/jobs`, job, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSnackbar({
