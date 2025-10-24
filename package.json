@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "v22.15.0"
+  },
   "type": "commonjs",
   "dependencies": {
     "bcryptjs": "^3.0.2",
@@ -10,7 +13,9 @@
     "nodemon": "^3.1.10"
   },
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build": "vite build"
   },
   "devDependencies": {
     "cross-env": "^10.1.0"
