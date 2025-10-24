@@ -1,23 +1,23 @@
 {
-  "engines": {
-    "node": "v22.15.0"
-  },
   "type": "commonjs",
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.19.1",
-    "nodemon": "^3.1.10"
+    "mongoose": "^8.19.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "cross-env": "^10.1.0"
   },
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js",
-    "build": "vite build"
-  },
-  "devDependencies": {
-    "cross-env": "^10.1.0"
+    "dev": "nodemon app.js"
   }
 }
