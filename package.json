@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "build": "cd Frontend && npm install && npm run build"
   }
 }
