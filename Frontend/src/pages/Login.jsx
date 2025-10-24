@@ -15,6 +15,9 @@ export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const BASE_URL = import.meta.env.PROD
+    ? "https://job-tracker-app-uely.onrender.com"
+    : "http://localhost:3000";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,10 +28,7 @@ export default function Login() {
     setError("");
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/login",
-        formData
-      );
+      const response = await axios.post(`${BASE_URL}/login`, formData);
       localStorage.setItem("token", response.data.token);
       navigate("/dashboard");
     } catch (err) {

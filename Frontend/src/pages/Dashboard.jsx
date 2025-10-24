@@ -42,6 +42,10 @@ export default function Dashboard() {
 
   const navigate = useNavigate();
 
+  const BASE_URL = import.meta.env.PROD
+    ? "https://job-tracker-app-uely.onrender.com"
+    : "http://localhost:3000";
+
   // Debounced search
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
@@ -61,7 +65,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function fetchMessage() {
       try {
-        const response = await axios.get("http://localhost:3000/dashboard", {
+        const response = await axios.get(`${BASE_URL}/dashboard`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         setMessage(response.data.message);
@@ -87,7 +91,7 @@ export default function Dashboard() {
         ...(search !== "all" && { search }),
       };
 
-      const res = await axios.get("http://localhost:3000/jobs", {
+      const res = await axios.get(`${BASE_URL}/jobs`, {
         headers: { Authorization: `Bearer ${token}` },
         params,
       });
@@ -109,7 +113,7 @@ export default function Dashboard() {
   const deleteJob = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:3000/jobs/${id}`, {
+      await axios.delete(`${BASE_URL}/jobs/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchJobs();

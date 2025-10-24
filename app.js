@@ -17,7 +17,7 @@ app.use(
   cors({
     origin:
       process.env.NODE_ENV === "production"
-        ? "https://job-tracker-app-uely.onrender.com/"
+        ? "https://job-tracker-app-uely.onrender.com"
         : "http://localhost:5173",
     credentials: true,
   })

@@ -20,6 +20,9 @@ export default function Register() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
+  const BASE_URL = import.meta.env.PROD
+    ? "https://job-tracker-app-uely.onrender.com"
+    : "http://localhost:3000";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,7 +34,7 @@ export default function Register() {
     setSuccess("");
 
     try {
-      await axios.post("http://localhost:3000/signup", formData);
+      await axios.post(`${BASE_URL}/signup`, formData);
       setSuccess("Account created successfully! Redirecting to login...");
       setTimeout(() => navigate("/login"), 1500);
     } catch (err) {
