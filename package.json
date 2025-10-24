@@ -19,6 +19,6 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "cd Frontend && npm install && npx vite build"
+    "build": "cd Frontend && npm install --include=dev && npx vite build"
   }
 }
